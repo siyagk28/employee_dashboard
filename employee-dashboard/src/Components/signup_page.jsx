@@ -73,7 +73,7 @@ const Signup = ({ onSignupSuccess, onBackToLogin }) => {
           </div>
           <h2 className="text-2xl font-black text-gray-900 tracking-tight">Create Account</h2>
           <p className="text-sm text-gray-500 mt-1.5 text-center">
-            Join Acme Corp OMS Portal workspace
+            
           </p>
         </div>
 
