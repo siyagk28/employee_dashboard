@@ -46,7 +46,6 @@ const Signup = ({ onSignupSuccess, onBackToLogin }) => {
       if (data.status === 'success') {
         setIsLoading(false);
         if (onSignupSuccess) onSignupSuccess();
-        alert("Account created successfully! Please log in.");
       } else {
         setIsLoading(false);
         setErrorMsg(data.message || 'Failed to create account');

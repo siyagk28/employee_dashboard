@@ -25,8 +25,7 @@ const Login = ({ onLoginSuccess, onShowSignup }) => {
 
       if (data.status === 'success') {
         setIsLoading(false);
-        if (onLoginSuccess) onLoginSuccess();
-        alert(`Welcome back, ${email.split('@')[0]}!`);
+        if (onLoginSuccess) onLoginSuccess(email);
       } else {
         setIsLoading(false);
         setErrorMsg(data.message || 'Invalid corporate email or password configuration.');

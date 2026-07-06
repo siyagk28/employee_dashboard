@@ -6,13 +6,20 @@ import Dashboard from './Components/Dashboard';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
 
-  const handleLoginSuccess = () => {
+  const handleLoginSuccess = (email) => {
     setIsLoggedIn(true);
+    setUserEmail(email);
   };
 
   const handleSignupSuccess = () => {
     setShowSignup(false);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserEmail('');
   };
 
   return (
@@ -30,7 +37,7 @@ function App() {
           />
         )
       ) : (
-        <Dashboard />
+        <Dashboard userEmail={userEmail} onLogout={handleLogout} />
       )}
     </>
   );
