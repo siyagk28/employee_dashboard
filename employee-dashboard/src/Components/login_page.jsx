@@ -32,7 +32,7 @@ const Login = ({ onLoginSuccess, onShowSignup }) => {
       }
     } catch (error) {
       setIsLoading(false);
-      setErrorMsg("Failed to connect to server. Please ensure XAMPP is running.");
+      setErrorMsg("Failed to connect to server.");
     }
   };
 
