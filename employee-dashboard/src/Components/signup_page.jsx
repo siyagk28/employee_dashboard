@@ -35,7 +35,7 @@ const Signup = ({ onSignupSuccess, onBackToLogin }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://sql302.infinityfree.com/register.php', {
+      const response = await fetch('https://sql302.infinityfree.com/register.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })

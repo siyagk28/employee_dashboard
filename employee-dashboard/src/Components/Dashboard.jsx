@@ -29,7 +29,7 @@ const Dashboard = ({ userEmail, onLogout }) => {
   // Fetch leave history
   const fetchLeaveHistory = async () => {
     try {
-      const response = await fetch('http://sql302.infinityfree.com/fetch_leave.php')
+      const response = await fetch('https://sql302.infinityfree.com/fetch_leave.php')
       const result = await response.json();
       console.log("Fetched Leaves:", result);
 
@@ -112,7 +112,7 @@ const Dashboard = ({ userEmail, onLogout }) => {
     };
 
     try {
-      const response = await fetch("http://sql302.infinityfree.com/add_leave.php", {
+      const response = await fetch("https://sql302.infinityfree.com/add_leave.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -149,7 +149,7 @@ const Dashboard = ({ userEmail, onLogout }) => {
     if (!window.confirm("Delete this leave request?")) return;
 
     try {
-      const response = await fetch("http://sql302.infinityfree.com/delete_leave.php", {
+      const response = await fetch("https://sql302.infinityfree.com/delete_leave.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

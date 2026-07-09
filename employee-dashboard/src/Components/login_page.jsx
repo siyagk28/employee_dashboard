@@ -15,7 +15,7 @@ const Login = ({ onLoginSuccess, onShowSignup }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://sql302.infinityfree.com/login.php', {
+      const response = await fetch('https://sql302.infinityfree.com/login.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
