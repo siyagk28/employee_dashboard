@@ -1,3 +1,7 @@
+
+
+
+
 <?php
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
@@ -5,16 +9,17 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Database configuration
-$host = 'localhost';
-$dbname = 'employee';
-$username = 'root';
-$password = '';
+$host = "sql302.infinityfree.com";
+$user = "if0_42372781";
+$pass = "fmUa7eawwny2p";
+$dbname = "if0_42372781_employee";
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // FIXED: Changed $username to $user, and $password to $pass
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo json_encode(['status' => 'error', 'message' => 'Database connection failed']);
+    echo json_encode(['status' => 'error', 'message' => 'Database connection failed: ' . $e->getMessage()]);
     exit;
 }
 
@@ -60,7 +65,3 @@ try {
     echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
 }
 ?>
-
-
-
-

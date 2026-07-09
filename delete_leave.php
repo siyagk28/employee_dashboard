@@ -1,47 +1,3 @@
-<!-- <?php -->
-
-// header("Access-Control-Allow-Origin: *");
-// header("Access-Control-Allow-Methods: POST");
-// header("Access-Control-Allow-Headers: Content-Type");
-// header("Content-Type: application/json");
-
-// $conn = new mysqli("localhost","root","","employee");
-
-// if($conn->connect_error){
-//     die(json_encode([
-//         "status"=>"error",
-//         "message"=>"Connection failed"
-//     ]));
-// }
-
-// $data = json_decode(file_get_contents("php://input"), true);
-
-// $id = $data["id"];
-
-// $stmt = $conn->prepare("DELETE FROM leave_requests WHERE id=?");
-// $stmt->bind_param("i",$id);
-
-// if($stmt->execute()){
-
-//     echo json_encode([
-//         "status"=>"success",
-//         "message"=>"Leave deleted successfully."
-//     ]);
-
-// }else{
-
-//     echo json_encode([
-//         "status"=>"error",
-//         "message"=>"Delete failed."
-//     ]);
-
-// }
-
-// $stmt->close();
-// $conn->close();
-
-// ?>
-
 <?php
 // 1. Bulletproof CORS Headers (This fixes the red error in your console)
 header("Access-Control-Allow-Origin: http://localhost:5173"); 
@@ -57,7 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 header("Content-Type: application/json");
 
 // 3. Connect to the correct database
-$conn = new mysqli("localhost", "root", "", "employee");
+
+// 2. Database Connection
+$host = "localhost";
+$user = "root"; 
+$password = ""; 
+$dbname = "employee"; 
+
+$conn = new mysqli($host, $user, $password, $dbname);
 
 if($conn->connect_error){
     die(json_encode([

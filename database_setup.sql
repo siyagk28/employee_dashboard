@@ -1,5 +1,4 @@
--- Add users table to your existing database
-USE employee;
+
 
 -- Create users table
 CREATE TABLE IF NOT EXISTS users (
