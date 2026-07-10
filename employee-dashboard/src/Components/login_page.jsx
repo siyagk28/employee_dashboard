@@ -15,7 +15,7 @@ const Login = ({ onLoginSuccess, onShowSignup }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://sql302.infinityfree.com/login.php', {
+      const response = await fetch('/login.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -48,9 +48,7 @@ const Login = ({ onLoginSuccess, onShowSignup }) => {
         
         {/* Brand Logo Header Section */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md shadow-indigo-600/20 mb-4 transition-transform hover:scale-105 duration-300">
-            Ac
-          </div>
+         
           <h2 className="text-2xl font-black text-gray-900 tracking-tight">Welcome Back</h2>
           <p className="text-sm text-gray-500 mt-1.5 text-center">
             

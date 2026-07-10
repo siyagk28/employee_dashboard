@@ -29,7 +29,7 @@ const Dashboard = ({ userEmail, onLogout }) => {
   // Fetch leave history
   const fetchLeaveHistory = async () => {
     try {
-      const response = await fetch('https://sql302.infinityfree.com/fetch_leave.php')
+      const response = await fetch('/fetch_leave.php')
       const result = await response.json();
       console.log("Fetched Leaves:", result);
 
@@ -42,7 +42,7 @@ const Dashboard = ({ userEmail, onLogout }) => {
   };
 
   useEffect(() => {
-    fetchLeaveHistory();
+  fetchLeaveHistory();
   }, []);
 
   // Data: Team with nested Weekly Attendance data
@@ -112,7 +112,7 @@ const Dashboard = ({ userEmail, onLogout }) => {
     };
 
     try {
-      const response = await fetch("https://sql302.infinityfree.com/add_leave.php", {
+      const response = await fetch("/add_leave.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -149,7 +149,7 @@ const Dashboard = ({ userEmail, onLogout }) => {
     if (!window.confirm("Delete this leave request?")) return;
 
     try {
-      const response = await fetch("https://sql302.infinityfree.com/delete_leave.php", {
+      const response = await fetch("/delete_leave.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -175,56 +175,7 @@ const Dashboard = ({ userEmail, onLogout }) => {
   return (
     <div className={`flex h-screen overflow-hidden font-sans transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-[#F9FAFB] text-gray-800'}`}>
       
-      {/* --- SIDEBAR --- */}
-      <aside className={`w-[260px] border-r flex flex-col hidden lg:flex shrink-0 transition-colors duration-300 overflow-y-auto ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-[#F4F5F7] border-gray-200'}`}>
-        <div className="p-5 mt-4">
-          <div className={`p-3 rounded-xl shadow-sm border flex items-center justify-between cursor-pointer transition-colors duration-300 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-100'}`}>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold shadow-sm">
-                Ac
-              </div>
-              <div>
-                <h2 className={`font-bold text-sm ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>Acme Corp</h2>
-                <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Workspace</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <nav className="flex-1 px-4 py-4 space-y-1">
-          <p className={`px-4 text-xs font-semibold mb-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>Main Menu</p>
-          <button 
-            onClick={() => setCurrentView('dashboard')}
-            className={`w-full flex items-center gap-3 px-4 py-2.5 shadow-sm border rounded-lg font-bold text-sm transition-colors duration-300 ${currentView === 'dashboard' ? (isDarkMode ? 'bg-gray-700 text-gray-100 border-gray-600' : 'bg-white text-gray-900 border-gray-100') : (isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-200')}`}
-          >
-            <span className="text-indigo-600 w-5">⊞</span> Dashboard
-          </button>
-          {['Team Directory', 'Leave Requests', 'Announcements'].map((item, idx) => (
-            <button key={item} className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg font-medium text-sm transition-colors duration-300 ${isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-200'}`}>
-              <span className={`w-5 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>{['👥', '✈️', '📢'][idx]}</span> {item}
-            </button>
-          ))}
-
-          {/* Profile Section */}
-          <div className="mt-8 px-4">
-            <p className={`text-xs font-semibold mb-2 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>Profile</p>
-            <div className={`p-3 rounded-xl border ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-100'}`}>
-              <div className="flex items-center gap-3">
-                <img src="https://i.pravatar.cc/150?img=11" className="w-10 h-10 rounded-full" alt="User" />
-                <div className="overflow-hidden">
-                  <p className="text-sm font-bold truncate">Alex Dev</p>
-                  <p className="text-[10px] opacity-70">alex@acme.com</p>
-                </div>
-              </div>
-            </div>
-            <button 
-              onClick={() => setCurrentView('settings')}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg font-medium text-sm mt-2 transition-colors duration-300 ${currentView === 'settings' ? (isDarkMode ? 'bg-gray-700 text-gray-100 border-gray-600' : 'bg-white text-gray-900 border-gray-100') : (isDarkMode ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:bg-gray-200')}`}
-            >
-              <span className={`w-5 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>⚙️</span> Settings
-            </button>
-          </div>
-        </nav>
-      </aside>
+  
 
       {/* --- MAIN CONTENT --- */}
       <main className={`flex-1 flex flex-col overflow-y-auto transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : 'bg-[#F9FAFB]'}`}>
